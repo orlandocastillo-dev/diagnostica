@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagnóstico de vm</title>
+<style>
+  :root { --ink:#1b2420; --muted:#5e6a64; --line:#dde2dc; --ok:#2c7346; --warn:#8f5400; --fail:#b42318; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 2rem 1rem; background: #f3f4f1; color: var(--ink); font: 15px/1.5 system-ui, "Segoe UI", sans-serif; }
+  main { max-width: 900px; margin: 0 auto; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 2rem; }
+  h1 { margin: 0; font-size: 1.5rem; }
+  h2 { margin: 2rem 0 .5rem; font-size: 1rem; }
+  .meta { color: var(--muted); margin: .25rem 0 1.5rem; }
+  .summary { display: flex; gap: 1rem; flex-wrap: wrap; padding: 1rem; border-radius: 8px; background: #f7f8f6; }
+  .summary strong { font-size: 1.4rem; display: block; }
+  .summary .overall { margin-left: auto; align-self: center; font-weight: 600; }
+  .overall.ok { color: var(--ok); } .overall.warn { color: var(--warn); } .overall.fail { color: var(--fail); }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; vertical-align: top; padding: .6rem .5rem; border-top: 1px solid var(--line); }
+  th { font-weight: 500; width: 32%; }
+  td:first-child { width: 90px; }
+  .badge { display: inline-block; padding: .05rem .5rem; border-radius: 99px; font-size: .8rem; font-weight: 600; }
+  .ok .badge { background: #e2f2e7; color: var(--ok); }
+  .warn .badge { background: #fbefd9; color: var(--warn); }
+  .fail .badge { background: #fde8e6; color: var(--fail); }
+  .hint { margin: .25rem 0 0; color: var(--muted); font-size: .875rem; }
+  footer { margin-top: 2rem; color: var(--muted); font-size: .8rem; }
+  @media print { body { background: #fff; padding: 0; } main { border: 0; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Diagnóstico de vm</h1>
+  <p class="meta">Linux 6.18.44-fc-v139, generado el 19/10/2026, 6:38:58 p. m.</p>
+
+  <section class="summary" aria-label="Resumen">
+    <div><strong>6</strong>correctos</div>
+    <div><strong>1</strong>avisos</div>
+    <div><strong>2</strong>fallas</div>
+    <p class="overall fail">Requiere atención</p>
+  </section>
+
+  <h2>Sistema</h2>
+  <table>
+    <tbody>
+      <tr class="ok">
+        <td><span class="badge">Correcto</span></td>
+        <th scope="row">Sistema operativo</th>
+        <td>#1 SMP PREEMPT_DYNAMIC @0 (6.18.44-fc-v139, x64)</td>
+      </tr>
+      <tr class="ok">
+        <td><span class="badge">Correcto</span></td>
+        <th scope="row">Tiempo encendido</th>
+        <td>30 min</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>Recursos</h2>
+  <table>
+    <tbody>
+      <tr class="ok">
+        <td><span class="badge">Correcto</span></td>
+        <th scope="row">Procesador</th>
+        <td>3 % de uso, 2 núcleos lógicos (Intel(R) Xeon(R) Processor @ 2.10GHz)</td>
+      </tr>
+      <tr class="ok">
+        <td><span class="badge">Correcto</span></td>
+        <th scope="row">Memoria RAM</th>
+        <td>11 % en uso (885 MB de 7.8 GB)</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>Almacenamiento</h2>
+  <table>
+    <tbody>
+      <tr class="warn">
+        <td><span class="badge">Aviso</span></td>
+        <th scope="row">Unidad /</th>
+        <td>11 % libre (28.4 GB de 252 GB)<p class="hint">Liberar espacio: Configuración &gt; Sistema &gt; Almacenamiento &gt; Archivos temporales. Mantener al menos 15 % libre.</p></td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>Red</h2>
+  <table>
+    <tbody>
+      <tr class="ok">
+        <td><span class="badge">Correcto</span></td>
+        <th scope="row">IP en eth0</th>
+        <td>192.0.2.2 (MAC 02:fc:00:00:00:01)</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>Conectividad</h2>
+  <table>
+    <tbody>
+      <tr class="fail">
+        <td><span class="badge">Falla</span></td>
+        <th scope="row">Resolución DNS</th>
+        <td>No se pudo resolver www.microsoft.com (ENOTFOUND)<p class="hint">Ejecutar ipconfig /flushdns y revisar los servidores DNS del adaptador.</p></td>
+      </tr>
+      <tr class="ok">
+        <td><span class="badge">Correcto</span></td>
+        <th scope="row">Internet por IP (1.1.1.1:443)</th>
+        <td>13 ms</td>
+      </tr>
+      <tr class="fail">
+        <td><span class="badge">Falla</span></td>
+        <th scope="row">HTTPS (microsoft.com:443)</th>
+        <td>Sin respuesta (ENOTFOUND)<p class="hint">Si la IP responde pero el dominio no, el problema es DNS. Si ninguno responde, revisar proxy, firewall o la red.</p></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <footer>Generado con diagnostica. Adjunta este archivo al ticket de soporte.</footer>
+</main>
+</body>
+</html>

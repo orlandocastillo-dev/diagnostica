@@ -1,0 +1,7 @@
+node_modules
+dist
+*.log
+informe*.html
+!docs/informe-ejemplo.html
+*.tsbuildinfo
+dev-dist

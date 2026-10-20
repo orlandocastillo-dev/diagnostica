@@ -1,0 +1,41 @@
+{
+  "name": "diagnostica",
+  "version": "1.0.0",
+  "description": "CLI de diagnóstico de equipos para soporte técnico: sistema, recursos, discos, red y conectividad, con informe HTML.",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "informe": "npm run build && node dist/cli.js --abrir",
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "dev": "npm run build && node dist/cli.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "soporte",
+    "it-support",
+    "diagnostico",
+    "cli",
+    "helpdesk"
+  ],
+  "author": "Orlando Castillo",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5"
+  },
+  "type": "module",
+  "bin": {
+    "diagnostica": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  }
+}
