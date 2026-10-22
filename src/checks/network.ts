@@ -63,7 +63,7 @@ export const dnsCheck: Check = {
   },
 };
 
-/** Abre una conexión TCP y mide cuánto tarda. No requiere permisos especiales, a diferencia de ICMP (ping). */
+// Abre una conexión TCP y mide cuánto tarda
 export function tcpLatency(host: string, port: number, timeoutMs = 4000): Promise<number> {
   return new Promise((resolve, reject) => {
     const start = performance.now();

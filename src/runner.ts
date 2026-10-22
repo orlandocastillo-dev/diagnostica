@@ -3,10 +3,7 @@ import type { Check, CheckResult, Report, Status, Thresholds } from "./types.js"
 
 const CHECK_TIMEOUT_MS = 8000;
 
-/**
- * Ejecuta todas las revisiones en paralelo. Si una falla o se demora, se reporta
- * como error y el resto del diagnóstico sigue: un técnico necesita el informe completo.
- */
+// Ejecuta todas las revisiones en paralelo
 export async function runChecks(checks: Check[], thresholds: Thresholds): Promise<CheckResult[]> {
   const settled = await Promise.all(
     checks.map(async (check) => {

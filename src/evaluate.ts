@@ -1,7 +1,4 @@
-/**
- * Reglas de evaluación puras: reciben números y umbrales, devuelven un estado.
- * Se mantienen separadas de la lectura del sistema para poder probarlas sin depender del equipo.
- */
+// Reglas de evaluación puras: reciben números y umbrales, devuelven un estado
 import type { Status, Thresholds } from "./types.js";
 
 export function evaluateMemory(usedPct: number, t: Thresholds): Status {
